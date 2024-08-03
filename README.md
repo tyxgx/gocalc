@@ -1,10 +1,10 @@
 # GoCalc
-GoCalc is a simpple calculator written in Go, mainly for the purpose of learning more about Go, and basic theoretical aspects of automata, and theory of computing.
+GoCalc is a simple calculator written in Go, mainly for the purpose of learning more about Go, and basic theoretical aspects of automata, and theory of computing.
 
 ### Building and Running
 
 
-To build, simply `cd` into the top-leve source directory, and run
+To build, simply `cd` into the top-level source directory, and run
 ```sh
 $ go build
 ```
