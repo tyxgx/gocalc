@@ -34,10 +34,13 @@ func main() {
 			continue
 		}
 
-		tokenList := lexer.tokenList_
-		for _, token := range tokenList {
-			token.Dump()
+		parser := Parser{}
+		parser.InitParser(buf.Text(), lexer.tokenList_)
+		node := parser.expression()
+		if node == nil {
+			continue
 		}
+		fmt.Fprintf(os.Stderr, "%f", node.eval())
 	}
 
 }

@@ -80,6 +80,12 @@ type Lexer struct {
 	hadErrorAtCurr_ bool
 }
 
+func (lexer *Lexer) dumpallTokens() {
+	for _, token := range lexer.tokenList_ {
+		token.Dump()
+	}
+}
+
 func (lexer *Lexer) globalLogError(errMsg string, eof bool) {
 	if !lexer.hadErrorAtCurr_ && lexer.hadErrorAtPrev_ {
 		if !eof {
