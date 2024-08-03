@@ -133,22 +133,22 @@ func (lexer *Lexer) LexOnetoken() {
 	switch c {
 	case '+':
 		lexer.hadErrorAtCurr_ = false
-		lexer.globalLogError("Illegal or unrecognised token", false)
+		lexer.globalLogError("Illegal or unrecognised token(s)", false)
 		lexer.addToken(TOKEN_PLUS, "+", Optional{None: 1, Some: 0})
 		break
 	case '-':
 		lexer.hadErrorAtCurr_ = false
-		lexer.globalLogError("Illegal or unrecognised token", false)
+		lexer.globalLogError("Illegal or unrecognised token(s)", false)
 		lexer.addToken(TOKEN_MINUS, "-", Optional{None: 1, Some: 0})
 		break
 	case '/':
 		lexer.hadErrorAtCurr_ = false
-		lexer.globalLogError("Illegal or unrecognised token", false)
+		lexer.globalLogError("Illegal or unrecognised token(s)", false)
 		lexer.addToken(TOKEN_DIV, "/", Optional{None: 1, Some: 0})
 		break
 	case '*':
 		lexer.hadErrorAtCurr_ = false
-		lexer.globalLogError("Illegal or unrecognised token", false)
+		lexer.globalLogError("Illegal or unrecognised token(s)", false)
 		lexer.addToken(TOKEN_MULT, "*", Optional{None: 1, Some: 0})
 		break
 	case ' ':
@@ -157,13 +157,13 @@ func (lexer *Lexer) LexOnetoken() {
 	default:
 		if isDigit(c) {
 			lexer.hadErrorAtCurr_ = false
-			lexer.globalLogError("Illegal or unrecognised token", false)
+			lexer.globalLogError("Illegal or unrecognised token(s)", false)
 			lexer.lexNumber()
 			break
 		}
 
 		if (lexer.hadErrorAtPrev_ && !lexer.hadErrorAtCurr_) || (lexer.hadErrorAtPrev_ && lexer.atEnd()) {
-			lexer.logError("Illegal or unrecognised token")
+			lexer.logError("Illegal or unrecognised token(s)")
 		}
 		lexer.hadErrorAtCurr_ = true
 		lexer.hadErrorAtPrev_ = true

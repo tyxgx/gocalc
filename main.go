@@ -11,14 +11,18 @@ func debug() {
 }
 
 func main() {
+	fmt.Fprintf(os.Stderr, "GoCalc 0.0.1. Type \"exit\" or press Ctrl-D to exit the prompt.")
 	for true {
 		buf := bufio.NewScanner(os.Stdin)
-
 		fmt.Fprintf(os.Stderr, "\n>>> ")
-
-		_ = buf.Scan()
+		success := buf.Scan()
 
 		if buf.Text() == "exit" {
+			return
+		}
+
+		// Handle EOF input (in case of ^D)
+		if err := buf.Err(); err == nil && !success {
 			return
 		}
 
